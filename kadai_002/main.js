@@ -102,12 +102,12 @@ const gameOver = id => {
   // const result = confirm(rankCheck(score));
   setTimeout(() => {
     const result = confirm(rankCheck(score));
+    // OKボタンをクリックされたらリロードする
+    if (result == true) {
+      window.location.reload();
+    }
   }, 10);
 
-  // OKボタンをクリックされたらリロードする
-  if (result == true) {
-    window.location.reload();
-  }
 };
 
 // カウントダウンタイマー
@@ -122,7 +122,8 @@ const timer = () => {
 
     // カウントが0になったらタイマーを停止する
     if (time <= 0) {
-      // 課題002　タイムアップと表示
+      // 課題002　タイムアップと表示するためにクリアした後、「タイムアップ」表示
+      typedfield.textContent = '';
       untypedfield.textContent = 'タイムアップ!';
       // clearInterval(id);
       gameOver(id);
